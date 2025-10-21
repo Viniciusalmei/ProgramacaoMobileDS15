@@ -60,49 +60,57 @@ class _LoginPageState extends State<LoginPage> {
       home: Scaffold(
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.person,size: 150 ),
-              TextField( //campo para o usuario digitar as informações
+              
+              Icon(Icons.person,size: 150 , color: Colors.white,),
+              Padding(padding: EdgeInsetsGeometry.symmetric(horizontal: 80),
+              child:  TextField( //campo para o usuario digitar as informações
                 controller: user,
                 style: TextStyle(color: Colors.white), 
                 decoration: InputDecoration(
                   hintText: "Insira o seu nome",
+                  hintStyle: TextStyle(color: Colors.white),
                   border: OutlineInputBorder( //colocar borda no texfield 
-                    borderRadius: BorderRadius.circular(20)
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(
+                      color: Colors.white
+                    )
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide(
                       color: Colors.white
                     )
-
                   )
                 ),
               ),
+              ),
+             
 
-              Padding(
-                padding: EdgeInsetsGeometry.symmetric(horizontal: 80, vertical: 20),
-                child: TextField(
-                controller: password, 
-                obscureText: true, // senha privada *******/
+             Padding(padding: EdgeInsetsGeometry.symmetric(horizontal: 80, vertical: 30),
+              child:  TextField( //campo para o usuario digitar as informações
+                controller: password,
+                style: TextStyle(color: Colors.white), 
                 decoration: InputDecoration(
-                  hintText: "Insira sua senha"
+                  hintText: "Insira  sua senha ",
+                  hintStyle: TextStyle(color: Colors.white),
+                  border: OutlineInputBorder( //colocar borda no texfield 
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(
+                      color: Colors.white
+                    )
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(
+                      color: Colors.white
+                    )
+                  )
                 ),
               ),
               ),
 
-              // TextField(
-              //   decoration: InputDecoration(
-              //     focusedBorder: UnderlineInputBorder(
-              //       borderSide: BorderSide(
-              //         color: Colors.green
-              //       )
-              //     )
-              //   ),
-              // ),
-
-
-              
               ElevatedButton(
               style: ElevatedButton.styleFrom( //muda o estilo do botao 
                 padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
@@ -111,9 +119,9 @@ class _LoginPageState extends State<LoginPage> {
               ) ,
               onPressed: login, 
               child: Text("Login")),
-
-
-              Text("$erro")
+              Padding(padding: EdgeInsetsGeometry.all(20),
+              child: Text("$erro",style: TextStyle(color: Colors.red),))
+              
 
 
             ],
