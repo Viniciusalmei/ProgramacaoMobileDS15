@@ -1,11 +1,11 @@
+import 'package:applogin/api.dart';
 import 'package:flutter/material.dart';
-import 'package:loginapp/api.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget { //permite a navegação
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
@@ -24,114 +24,77 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  //Variavel que observa o que o usuário digita
+  //Variavel que observa o que o usuario digita :)😎
   TextEditingController user = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  //Variaveis para logar
+  //Variavel com as informações corretas ✔🤔🐱‍🏍
   String correctUser = "vinicin";
   String correctPassword = "123";
 
-  //Variavel para mostrar a mensagem do erro 
+  //Variavel para mostrar o erro 👀
   String erro = "";
 
-
-  void login() { //se der tudo certo navega para outra pagina.
+  //Funcao para validar as informações 
+  void login() {
     if(user.text == correctUser && password.text == correctPassword){
-      Navigator.push(context,MaterialPageRoute(builder: (context)=> ApiPage()));
-
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> ApiPage()));
     }else {
-      setState(() { //permite alterar o valor da variavel 
+      setState(() {
         erro = "Existem credenciais erradas";
       });
     }
-
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.black
-      ),
       home: Scaffold(
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              
-              Icon(Icons.person,size: 150 , color: Colors.white,),
-              Padding(padding: EdgeInsetsGeometry.symmetric(horizontal: 80),
-              child:  TextField( //campo para o usuario digitar as informações
-                controller: user,
-                style: TextStyle(color: Colors.white), 
+              Icon(Icons.person, size: 180, color: Colors.blue,),
+
+              TextField(
+                controller: user, //Aqui voce coloca a variavel que observa oq o usuario digita
+                maxLength: 150, //Maximo de caracteres digitados 
                 decoration: InputDecoration(
-                  hintText: "Insira o seu nome",
-                  hintStyle: TextStyle(color: Colors.white),
-                  border: OutlineInputBorder( //colocar borda no texfield 
-                    borderRadius: BorderRadius.circular(20),
+                  hintText: "Insira o seu nome", //Hint = Dica/o famoso "placeholder"
+                  border: OutlineInputBorder(//cria borda
+                    borderRadius: BorderRadius.circular(20), //Faz a circuferencia da borda
                     borderSide: BorderSide(
-                      color: Colors.white
+                      color: Colors.blue
                     )
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
+                  )
+                ),
+
+              ),
+
+              TextField(
+                obscureText: true, //Deixa a senha privada *******
+                controller: password, //Aqui voce coloca a variavel que observa oq o usuario digita
+                maxLength: 150, //Maximo de caracteres digitados 
+                decoration: InputDecoration(
+                  hintText: "Insira sua senha", //Hint = Dica/o famoso "placeholder"
+                  border: OutlineInputBorder(//cria borda
+                    borderRadius: BorderRadius.circular(20), //Faz a circuferencia da borda
                     borderSide: BorderSide(
-                      color: Colors.white
+                      color: Colors.blue
                     )
                   )
                 ),
               ),
-              ),
-             
 
-             Padding(padding: EdgeInsetsGeometry.symmetric(horizontal: 80, vertical: 30),
-              child:  TextField( //campo para o usuario digitar as informações
-                controller: password,
-                style: TextStyle(color: Colors.white), 
-                decoration: InputDecoration(
-                  hintText: "Insira  sua senha ",
-                  hintStyle: TextStyle(color: Colors.white),
-                  border: OutlineInputBorder( //colocar borda no texfield 
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      color: Colors.white
-                    )
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      color: Colors.white
-                    )
-                  )
-                ),
-              ),
-              ),
+              ElevatedButton(onPressed: login, child: Text("Login")),
+              Text("$erro")
 
-              ElevatedButton(
-              style: ElevatedButton.styleFrom( //muda o estilo do botao 
-                padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-                backgroundColor: Colors.white, //cor de fundo 
-                foregroundColor: Colors.black , //cor do texto
-              ) ,
-              onPressed: login, 
-              child: Text("Login")),
-              Padding(padding: EdgeInsetsGeometry.all(20),
-              child: Text("$erro",style: TextStyle(color: Colors.red),))
-              
+
 
 
             ],
-          ),
+          )
         )
-
-
       )
-      
     );
   }
 }
-
