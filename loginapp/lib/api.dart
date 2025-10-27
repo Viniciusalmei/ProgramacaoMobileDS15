@@ -21,14 +21,14 @@ class _ApiPageState extends State<ApiPage> {
   }
 
   void getvalue() async { //funcao que busca o valor 
-    final response = await http.get(Uri.parse("https://dummyjson.com/products"));
+    final response = await http.get(Uri.parse("https://rickandmortyapi.com/api/character"));
 
     if(response.statusCode == 200){//se o status da requisicao for OK 
       //json decode transforma as propriedades do json  em tipos de dados 
       final data = jsonDecode(response.body); 
 
       setState(() {
-        value = data[0]["title"];
+        value = data["results"][0]["name"];
       });
 
 
@@ -45,6 +45,7 @@ class _ApiPageState extends State<ApiPage> {
     return MaterialApp(
       home: Scaffold(
         body: value == null ? CircularProgressIndicator() : Text("$value")
+       
       )
     );
   }
