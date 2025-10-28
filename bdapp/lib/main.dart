@@ -32,7 +32,7 @@ class TelaGet extends StatefulWidget {
 }
 
 class _TelaGetState extends State<TelaGet> {
-  double? temperatura; //Variavel double , pode ser nula , caso o database nao exista
+  String? temperatura; //Variavel String , pode ser nula , caso o database nao exista
 
   @override
   void initState() {
@@ -45,6 +45,7 @@ class _TelaGetState extends State<TelaGet> {
     FirebaseFirestore.instance.collection("monitoramento").snapshots().listen(
       (snapshot){ //O que voce ira fazer para cada um? 
       dynamic data = snapshot.docs.first.data(); //data == ao primeiro documento que tem no seu banco
+      print("$data");
       setState(() {
         temperatura = data['temperatura'];
       });
