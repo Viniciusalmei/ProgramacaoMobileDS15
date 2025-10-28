@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: TelaGet()
     );
   }
@@ -57,8 +58,15 @@ class _TelaGetState extends State<TelaGet> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(title: Text("Tela Get Firebase", style: TextStyle(fontWeight: FontWeight.bold),),
+        centerTitle: true,
+        toolbarHeight: 200,
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
+        ),
+
         body: Column(
           children: [
             Text("$temperatura")
