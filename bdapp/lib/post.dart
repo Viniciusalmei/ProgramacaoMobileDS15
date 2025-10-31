@@ -9,7 +9,7 @@ class PostPage extends StatefulWidget {
 }
 
 class _PostPageState extends State<PostPage> {
-  TextEditingController temperature =  TextEditingController();
+  TextEditingController? temperature =  TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -19,9 +19,10 @@ class _PostPageState extends State<PostPage> {
   
   Future<void> postValue() async {
     try {
-      FirebaseFirestore.instance.collection("monitoramento").add(
+      FirebaseFirestore.instance.collection("temperature").add(
         {
-          "temperatura": temperature.text,
+          
+          "temperatura": temperature!.text,
         }
       );
     }catch(e){
@@ -33,7 +34,7 @@ class _PostPageState extends State<PostPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Column(children: [
+        body: temperature == null ? CircularProgressIndicator() : Column(children: [
           TextField(
             controller: temperature,
           ),
