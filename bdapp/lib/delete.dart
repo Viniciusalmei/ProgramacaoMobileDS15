@@ -48,12 +48,12 @@ class _PutPageState extends State<PutPage> {
           : ListView.builder(
               itemCount: values!.length,
               itemBuilder: (context, index) {
-                final doc = values![index];
+                final item = values![index];
                 return ListTile(title: Text("Temperatura"),
-                subtitle: Text("${doc['temperatura']}"),
+                subtitle: Text("${item['temperatura']}"),
                 trailing: GestureDetector(
                   child: Icon(Icons.remove),
-                  onTap: () => deleteValue(doc.id),
+                  onTap: () => deleteValue(item.id),
                 ),
                 );
               },
