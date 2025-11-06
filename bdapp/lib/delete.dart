@@ -19,8 +19,8 @@ class _PutPageState extends State<PutPage> {
 
   void getValues() {
     FirebaseFirestore.instance.collection("monitoramento").snapshots().listen(
-      (snapshot) {
-        final data = snapshot.docs;
+      (snapshots) {
+        final data = snapshots.docs;
         setState(() {
           values = data;
         });
