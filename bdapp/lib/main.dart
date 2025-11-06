@@ -1,3 +1,4 @@
+import 'package:bdapp/delete.dart';
 import 'package:bdapp/post.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -73,7 +74,7 @@ class _TelaGetState extends State<TelaGet> {
             Text("${temperatura}"),
 
             ElevatedButton(onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> PostPage()));  
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> DeletePage()));  
             }, child: Text("Ir para tela post!"))
           ],
         )

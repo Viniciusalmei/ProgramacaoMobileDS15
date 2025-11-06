@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class PutPage extends StatefulWidget {
-  const PutPage({super.key});
+class DeletePage extends StatefulWidget {
+  const DeletePage({super.key});
 
   @override
-  State<PutPage> createState() => _PutPageState();
+  State<DeletePage> createState() => _DeletePageState();
 }
 
-class _PutPageState extends State<PutPage> {
+class _DeletePageState extends State<DeletePage> {
   List<dynamic>? values;
 
   @override
