@@ -29,6 +29,7 @@ class _DeletePageState extends State<DeletePage> {
   }
 
   /// Função para deletar um documento pelo ID
+  /// Precisa receber o parametro String id ,pois o id de cada item 
   Future<void> deleteValue(String id) async {
     await FirebaseFirestore.instance
         .collection("monitoramento")
